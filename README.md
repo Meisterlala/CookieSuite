@@ -4,7 +4,7 @@ CookieSuite is a web interface for managing cookie production. This Laravel-base
 
 ## Requirements
 
-- PHP >= 8.0
+- PHP >= 8.2
 - Composer
 - Postgres >= 13.0
 
