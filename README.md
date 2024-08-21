@@ -13,7 +13,7 @@ CookieSuite is a web interface for managing cookie production. This Laravel-base
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/StefanNemeth/cookiesuite.git
+git clone https://github.com/StefanNemeth/CookieSuite.git
 cd cookiesuite
 ```
 
