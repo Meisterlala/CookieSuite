@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CookieCreated;
 use App\Models\Cookie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CookieController extends Controller
 {
@@ -29,7 +31,11 @@ class CookieController extends Controller
             'production_date' => 'required|date',
         ]);
 
-        Cookie::create($request->all());
+        $cookie = Cookie::create($request->all());
+
+        Mail::to(
+            config('app.admin_email')
+        )->send(new CookieCreated($cookie));
 
         return redirect()->route('cookies.index')->with('success', 'Cookie created successfully.');
     }
