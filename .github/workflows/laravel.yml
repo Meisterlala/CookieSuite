@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main  # Ändere dies entsprechend dem Branch, den du verwenden möchtest
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build Docker image
+      run: |
+        docker build -t app:latest .
+
+    - name: Run Docker container and execute command
+      run: |
+        docker run --rm app:latest php artisan migrate && php artisan test
